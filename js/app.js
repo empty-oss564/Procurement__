@@ -102,6 +102,7 @@ const App = {
     StatusModule.init();
     NotificationsModule.init();
     JudgeDemoModule.init();
+    LanguageModule.init();
 
     // Set initial active section
     this.navigateTo("home");
