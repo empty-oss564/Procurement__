@@ -1,0 +1,1020 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Smart Procurement Scheduling for Farmers | SIH 2026 (SIH26032)</title>
+  
+  <!-- Modern Agri-Tech Stylesheet -->
+  <link rel="stylesheet" href="css/styles.css">
+  
+  <!-- Favicon / Meta -->
+  <meta name="description" content="AI-assisted Smart Procurement Scheduling and Dynamic Queue Management System for Farmers. Team Code Cultivators | Smart India Hackathon 2026 (SIH26032)">
+</head>
+<body>
+
+  <!-- ==========================================================================
+       SITE HEADER / NAVIGATION
+       ========================================================================== -->
+  <header class="site-header">
+    <div class="container header-inner">
+      <!-- Brand & Project Meta -->
+      <div class="brand">
+        <div class="brand-icon">🌾</div>
+        <div class="brand-info">
+          <h1>Smart Procurement Scheduling</h1>
+          <div class="brand-meta">
+            <span class="team-badge">Team Code Cultivators</span>
+            <span class="brand-badge">SIH 2026 | SIH26032</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Navigation Bar -->
+      <nav class="main-nav" id="mainNav">
+        <a href="#home" class="nav-link active" data-nav-target="home">🏠 Home</a>
+        <a href="#registration" class="nav-link" data-nav-target="registration">📝 Farmer Registration</a>
+        <a href="#recommendation" class="nav-link" data-nav-target="recommendation">📍 Centres</a>
+        <a href="#scheduling" class="nav-link" data-nav-target="scheduling">🎟️ Token &amp; Slot</a>
+        <a href="#queue" class="nav-link" data-nav-target="queue">👥 Live Queue</a>
+        <a href="#tracking" class="nav-link" data-nav-target="tracking">🚚 Tracking</a>
+        <a href="#rescheduling" class="nav-link" data-nav-target="rescheduling">⏱️ Rescheduling</a>
+        <a href="#status" class="nav-link" data-nav-target="status">🌾 Procurement Status</a>
+        <a href="#notifications" class="nav-link" data-nav-target="notifications">
+          🔔 Alerts <span class="badge-count" id="navNotifCountBadge" style="display: none;">0</span>
+        </a>
+        <a href="#judge-demo" class="nav-link nav-special" data-nav-target="judge-demo">▶ Judge Demo (16 Steps)</a>
+      </nav>
+
+      <!-- Global Actions -->
+      <div class="header-actions">
+        <button class="btn btn-secondary btn-sm" id="btnResetDemo" title="Reset to SIH standard scenario">
+          🔄 Reset Demo
+        </button>
+        <button class="mobile-menu-btn" id="mobileMenuBtn" aria-label="Toggle Navigation">
+          ☰
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- ==========================================================================
+       MAIN CONTENT CONTAINER
+       ========================================================================== -->
+  <main class="container">
+
+    <!-- ========================================================================
+         SECTION 1: HOME / DASHBOARD
+         ======================================================================== -->
+    <section class="app-section active-section" id="sec-home">
+      <!-- Hero Banner -->
+      <div class="hero-banner">
+        <div class="hero-tag">Smart India Hackathon 2026 &bull; Problem Statement: SIH26032</div>
+        <h2 class="hero-title">Smart Procurement Scheduling &amp; Dynamic Queue Management for Farmers</h2>
+        <p class="hero-desc">
+          Eliminating long Mandi waiting times, multi-day roadside congestion, and post-harvest losses through farmer-driven travel time models, intelligent 25% threshold delay detection, and automated slot rescheduling.
+        </p>
+        <div class="hero-ctas">
+          <button class="btn btn-accent btn-lg" onclick="App.navigateTo('registration')">
+            📝 Register as Farmer
+          </button>
+          <button class="btn btn-secondary btn-lg" onclick="App.navigateTo('recommendation')">
+            📍 Find Procurement Centre
+          </button>
+          <button class="btn btn-outline-primary btn-lg" style="color: white; border-color: white;" onclick="App.navigateTo('judge-demo')">
+            ▶ Launch 16-Step Judge Tour
+          </button>
+        </div>
+      </div>
+
+      <!-- Live KPI Metrics -->
+      <div class="grid-4" style="margin-bottom: 1.5rem;">
+        <div class="kpi-card">
+          <div class="kpi-icon" style="background: #e8f5e9; color: #2e7d32;">🏛️</div>
+          <div class="kpi-info">
+            <h4>Active Mandis</h4>
+            <div class="kpi-value">4 Regional Hubs</div>
+          </div>
+        </div>
+        <div class="kpi-card">
+          <div class="kpi-icon" style="background: #e1f5fe; color: #0288d1;">⏳</div>
+          <div class="kpi-info">
+            <h4>Avg. Wait Saved</h4>
+            <div class="kpi-value">6.5 Hours</div>
+          </div>
+        </div>
+        <div class="kpi-card">
+          <div class="kpi-icon" style="background: #fff3e0; color: #ed6c02;">🌾</div>
+          <div class="kpi-info">
+            <h4>Guaranteed MSP</h4>
+            <div class="kpi-value">100% Direct DBT</div>
+          </div>
+        </div>
+        <div class="kpi-card">
+          <div class="kpi-icon" style="background: #ede7f6; color: #673ab7;">⚡</div>
+          <div class="kpi-info">
+            <h4>Threshold Buffer</h4>
+            <div class="kpi-value">25% Travel Time</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Problem vs Solution Analysis -->
+      <div class="prob-sol-grid">
+        <div class="card prob-card">
+          <div class="card-header">
+            <h3>⚠️ Current Mandi Ground Problems</h3>
+            <span class="badge status-danger">Real Distress</span>
+          </div>
+          <ul class="prob-sol-list">
+            <li>❌ <strong>Unpredictable Waiting Times:</strong> Farmers wait 12–36 hours in tractor lines with no visibility into queue load.</li>
+            <li>❌ <strong>Traffic &amp; Transit Bottlenecks:</strong> Unavoidable village road delays cause farmers to miss rigid slots, forfeiting their day's procurement.</li>
+            <li>❌ <strong>Mandi Gate Congestion:</strong> Uneven distribution across regional centres causes severe yard bottlenecks.</li>
+            <li>❌ <strong>Opaque Crop Grading &amp; Delayed Payments:</strong> Lack of digital receipts and unclear deduction reasons leave farmers vulnerable.</li>
+          </ul>
+        </div>
+
+        <div class="card sol-card">
+          <div class="card-header">
+            <h3>✨ Code Cultivators' Smart Solution</h3>
+            <span class="badge status-success">SIH 2026 Innovation</span>
+          </div>
+          <ul class="prob-sol-list">
+            <li>✅ <strong>Farmer-Entered Travel Time:</strong> Farmers specify actual expected travel time based on ground truth.</li>
+            <li>✅ <strong>Dynamic 25% Threshold Engine:</strong> Grace buffer preserves slots for minor delays; automatically reschedules when breached.</li>
+            <li>✅ <strong>Smart Centre Recommendation:</strong> Balances distance, queue length, and processing capacity across Mandis.</li>
+            <li>✅ <strong>End-to-End Procurement &amp; DBT:</strong> Transparent accepted/rejected quantity breakdown, live MSP formula, and digital e-receipt.</li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- Complete System Workflow -->
+      <div class="workflow-container">
+        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.5rem;">
+          <h3 style="color: var(--secondary);">🔄 Complete End-to-End System Workflow</h3>
+          <span style="font-size: 0.8rem; color: var(--text-muted);">Click any node to navigate directly</span>
+        </div>
+        <div class="workflow-steps">
+          <div class="workflow-node" onclick="App.navigateTo('registration')">
+            <div class="wf-icon">📝</div>
+            <div class="wf-label">1. Registration</div>
+          </div>
+          <div class="wf-arrow">➔</div>
+          <div class="workflow-node" onclick="App.navigateTo('recommendation')">
+            <div class="wf-icon">📍</div>
+            <div class="wf-label">2. Centre Choice</div>
+          </div>
+          <div class="wf-arrow">➔</div>
+          <div class="workflow-node" onclick="App.navigateTo('scheduling')">
+            <div class="wf-icon">🎟️</div>
+            <div class="wf-label">3. Token &amp; Slot</div>
+          </div>
+          <div class="wf-arrow">➔</div>
+          <div class="workflow-node" onclick="App.navigateTo('queue')">
+            <div class="wf-icon">👥</div>
+            <div class="wf-label">4. Live Queue</div>
+          </div>
+          <div class="wf-arrow">➔</div>
+          <div class="workflow-node" onclick="App.navigateTo('rescheduling')">
+            <div class="wf-icon">⏱️</div>
+            <div class="wf-label">5. 25% Threshold</div>
+          </div>
+          <div class="wf-arrow">➔</div>
+          <div class="workflow-node" onclick="App.navigateTo('tracking')">
+            <div class="wf-icon">🚚</div>
+            <div class="wf-label">6. Tracking</div>
+          </div>
+          <div class="wf-arrow">➔</div>
+          <div class="workflow-node" onclick="App.navigateTo('status')">
+            <div class="wf-icon">🌾</div>
+            <div class="wf-label">7. Procurement</div>
+          </div>
+          <div class="wf-arrow">➔</div>
+          <div class="workflow-node" onclick="App.navigateTo('status')">
+            <div class="wf-icon">💳</div>
+            <div class="wf-label">8. DBT Payment</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========================================================================
+         SECTION 2: FARMER REGISTRATION
+         ======================================================================== -->
+    <section class="app-section" id="sec-registration">
+      <div class="section-header">
+        <div class="section-title-wrap">
+          <h2>📝 Farmer Profile &amp; Harvest Registration</h2>
+          <div class="section-subtitle">Register farmer profile, crop harvest details, and farmer-specified expected travel time.</div>
+        </div>
+        <div class="section-actions">
+          <button class="btn btn-secondary btn-sm" id="btnFillDemoFarmer">
+            ⚡ Fill SIH Demo Scenario Preset
+          </button>
+        </div>
+      </div>
+
+      <div class="grid-2-1">
+        <!-- Registration Form Card -->
+        <div class="card">
+          <form id="farmerRegistrationForm">
+            <div class="form-row">
+              <div class="form-group">
+                <label class="form-label" for="regFarmerName">Farmer Full Name <span class="required">*</span></label>
+                <input type="text" id="regFarmerName" class="form-control" placeholder="e.g. Ramesh Patel" required value="Ramesh Patel">
+              </div>
+              <div class="form-group">
+                <label class="form-label" for="regMobile">Mobile Number <span class="required">*</span></label>
+                <input type="tel" id="regMobile" class="form-control" placeholder="10-digit mobile number" maxlength="10" required value="9876543210">
+              </div>
+            </div>
+
+            <div class="form-row">
+              <div class="form-group">
+                <label class="form-label" for="regVillage">Village / Gram Panchayat</label>
+                <input type="text" id="regVillage" class="form-control" placeholder="e.g. Pipariya" value="Pipariya">
+              </div>
+              <div class="form-group">
+                <label class="form-label" for="regDistrict">District</label>
+                <input type="text" id="regDistrict" class="form-control" placeholder="e.g. Bhopal" value="Bhopal">
+              </div>
+            </div>
+
+            <div class="form-row">
+              <div class="form-group">
+                <label class="form-label" for="regCrop">Crop / Agricultural Product <span class="required">*</span></label>
+                <select id="regCrop" class="form-control"></select>
+                <div class="form-hint" id="cropMspBadge" style="color: var(--primary); font-weight: 600;"></div>
+              </div>
+              <div class="form-group">
+                <label class="form-label" for="regQuantity">Quantity <span class="required">*</span></label>
+                <input type="number" id="regQuantity" class="form-control" min="1" step="any" placeholder="100" required value="100">
+              </div>
+              <div class="form-group" style="max-width: 120px;">
+                <label class="form-label" for="regUnit">Unit</label>
+                <select id="regUnit" class="form-control">
+                  <option value="kg" selected>kg</option>
+                  <option value="quintal">Quintal</option>
+                </select>
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label class="form-label" for="regPreferredCentre">Preferred Procurement Centre</label>
+              <select id="regPreferredCentre" class="form-control"></select>
+            </div>
+
+            <!-- Crucial Expected Travel Time Section -->
+            <div style="background: #f8fafc; border: 1px solid var(--border-color); border-radius: var(--radius-md); padding: 1rem; margin: 1rem 0;">
+              <label class="form-label" style="font-size: 0.95rem; color: var(--primary-dark);">
+                🚗 Farmer Expected Travel Time (Manual Entry) <span class="required">*</span>
+              </label>
+              <p style="font-size: 0.8rem; color: var(--text-muted); margin-bottom: 0.75rem;">
+                <strong>Why Manual?</strong> Farmers possess real-world ground knowledge of village terrain, tractor speed, road repairs, and weather. System does not force rigid estimates.
+              </p>
+              <div class="form-row">
+                <div class="form-group">
+                  <label class="form-label" for="regTravelHours">Hours</label>
+                  <input type="number" id="regTravelHours" class="form-control" min="0" max="24" value="5" required>
+                </div>
+                <div class="form-group">
+                  <label class="form-label" for="regTravelMins">Minutes</label>
+                  <input type="number" id="regTravelMins" class="form-control" min="0" max="59" value="0" required>
+                </div>
+              </div>
+            </div>
+
+            <div style="display: flex; gap: 0.75rem; justify-content: flex-end; margin-top: 1.25rem;">
+              <button type="submit" class="btn btn-primary btn-lg">
+                ✓ Confirm Registration &amp; Find Mandi
+              </button>
+            </div>
+          </form>
+        </div>
+
+        <!-- Live 25% Threshold Calculation Card -->
+        <div class="card">
+          <div class="card-header">
+            <h3>⚙️ Dynamic 25% Threshold</h3>
+            <span class="badge status-info">System Engine</span>
+          </div>
+
+          <div class="threshold-live-box">
+            <div class="threshold-header">
+              <h4><span>⏱️</span> Real-time Calculated Buffer</h4>
+              <span class="badge badge-success">Fixed 25% Rule</span>
+            </div>
+            <p style="font-size: 0.82rem; color: var(--text-main);">
+              Based on the expected travel time entered by the farmer:
+            </p>
+
+            <div class="threshold-values-grid">
+              <div class="threshold-stat">
+                <div class="label">Total Travel</div>
+                <div class="val" id="previewTotalTravelTime">300 mins</div>
+              </div>
+              <div class="threshold-stat" style="background: #fff8e1; border-color: #ffe082;">
+                <div class="label">25% Buffer</div>
+                <div class="val" id="previewThresholdTime" style="color: #b26a00;">75 mins</div>
+              </div>
+              <div class="threshold-stat">
+                <div class="label">Formatted</div>
+                <div class="val" id="previewFormattedDuration" style="font-size: 0.95rem;">5 hrs</div>
+              </div>
+            </div>
+
+            <div class="rule-alert" id="previewRuleSummary">
+              <strong>25% Buffer Guarantee:</strong> If delay is &le; <strong>75 mins</strong>, your slot remains locked. If delay exceeds <strong>75 mins</strong>, system reassigns next available slot.
+            </div>
+          </div>
+
+          <div style="margin-top: 1.25rem; font-size: 0.82rem; color: var(--text-muted); line-height: 1.5;">
+            <h4 style="font-size: 0.88rem; color: var(--secondary); margin-bottom: 0.35rem;">Important Business Rules</h4>
+            <ul style="padding-left: 1.2rem;">
+              <li>Farmer enters expected travel time freely.</li>
+              <li>System automatically calculates 25% threshold.</li>
+              <li>Farmer <strong>cannot</strong> alter the 25% policy percentage.</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========================================================================
+         SECTION 3: CENTRE RECOMMENDATION
+         ======================================================================== -->
+    <section class="app-section" id="sec-recommendation">
+      <div class="section-header">
+        <div class="section-title-wrap">
+          <h2>📍 Procurement Centre Recommendation</h2>
+          <div class="section-subtitle">Multi-centre scoring algorithm balancing travel distance, queue load, and processing capacity.</div>
+        </div>
+      </div>
+
+      <!-- AI Recommendation Banner -->
+      <div class="card" id="recommendationSummaryBox" style="background: #f0fdf4; border-color: var(--primary-border); margin-bottom: 1.25rem;"></div>
+
+      <!-- Centres Grid -->
+      <div class="grid-2" id="centreCardsContainer"></div>
+    </section>
+
+    <!-- ========================================================================
+         SECTION 4: SCHEDULING / TOKEN
+         ======================================================================== -->
+    <section class="app-section" id="sec-scheduling">
+      <div class="section-header">
+        <div class="section-title-wrap">
+          <h2>🎟️ Token &amp; Smart Scheduling</h2>
+          <div class="section-subtitle">Select an appointment time slot and receive a cryptographically unique farmer procurement pass.</div>
+        </div>
+        <div class="section-actions">
+          <button class="btn btn-secondary btn-sm" onclick="SchedulingModule.generateNewToken()">
+            🔄 Generate New Token ID
+          </button>
+        </div>
+      </div>
+
+      <div class="grid-1-2">
+        <!-- Token Pass Summary Card -->
+        <div class="card token-pass-card">
+          <div style="text-align: center;">
+            <div style="font-size: 0.8rem; font-weight: 700; color: var(--text-muted); text-transform: uppercase;">Official Mandi Token</div>
+            <div class="token-badge-large" id="tokenBadgeDisplay">KP-024</div>
+            <div style="font-size: 0.75rem; color: var(--primary-dark); font-weight: bold;">✓ VERIFIED APPOINTMENT PASS</div>
+          </div>
+
+          <div style="margin-top: 1rem; border-top: 1px dashed var(--primary-border); padding-top: 0.75rem; font-size: 0.85rem;">
+            <div style="display: flex; justify-content: space-between; margin-bottom: 0.35rem;">
+              <span style="color: var(--text-muted);">Centre:</span>
+              <strong id="tokenCentreName">Kisan Pragati Mandi</strong>
+            </div>
+            <div style="display: flex; justify-content: space-between; margin-bottom: 0.35rem;">
+              <span style="color: var(--text-muted);">Date:</span>
+              <strong id="tokenDateDisplay">--</strong>
+            </div>
+            <div style="display: flex; justify-content: space-between; margin-bottom: 0.35rem;">
+              <span style="color: var(--text-muted);">Arrival Time:</span>
+              <strong id="tokenArrivalTime" style="color: var(--primary);">10:00 AM</strong>
+            </div>
+            <div style="display: flex; justify-content: space-between; margin-bottom: 0.35rem;">
+              <span style="color: var(--text-muted);">Est. Processing:</span>
+              <span id="tokenProcTime">~15 minutes</span>
+            </div>
+            <div style="display: flex; justify-content: space-between; margin-bottom: 0.35rem;">
+              <span style="color: var(--text-muted);">Queue Position:</span>
+              <span id="tokenQueuePos">#5 in slot queue</span>
+            </div>
+            <div style="display: flex; justify-content: space-between;">
+              <span style="color: var(--text-muted);">Est. Completion:</span>
+              <strong id="tokenCompletionTime" style="color: var(--secondary);">10:20 AM</strong>
+            </div>
+          </div>
+
+          <div style="margin-top: 1.25rem;">
+            <button class="btn btn-accent btn-sm" style="width: 100%;" onclick="SchedulingModule.showTokenPassModal()">
+              🔍 View &amp; Print Digital Token Pass
+            </button>
+          </div>
+        </div>
+
+        <!-- Slot Selection Card -->
+        <div class="card">
+          <div class="card-header">
+            <h3>⏰ Available Procurement Windows</h3>
+            <span class="badge status-success">Capacity Open</span>
+          </div>
+          <p style="font-size: 0.85rem; color: var(--text-muted);">
+            Choose your preferred arrival window. Each slot maintains calibrated weighbridge throughput to prevent bottlenecks.
+          </p>
+
+          <div class="slot-grid" id="slotsGridContainer"></div>
+
+          <div style="background: var(--bg-main); border-radius: var(--radius-md); padding: 1rem; margin-top: 1.25rem; display: flex; justify-content: space-between; align-items: center;">
+            <div>
+              <div style="font-size: 0.85rem; font-weight: 700; color: var(--secondary);">Ready to Proceed?</div>
+              <div style="font-size: 0.78rem; color: var(--text-muted);">Track your live queue position or departure transit.</div>
+            </div>
+            <div style="display: flex; gap: 0.5rem;">
+              <button class="btn btn-primary btn-sm" onclick="App.navigateTo('queue')">
+                👥 View Live Queue
+              </button>
+              <button class="btn btn-secondary btn-sm" onclick="App.navigateTo('tracking')">
+                🚚 Track En Route
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========================================================================
+         SECTION 5: LIVE QUEUE MONITORING
+         ======================================================================== -->
+    <section class="app-section" id="sec-queue">
+      <div class="section-header">
+        <div class="section-title-wrap">
+          <h2>👥 Live Mandi Queue Dashboard</h2>
+          <div class="section-subtitle">Real-time gate clearance velocity, waiting time estimates, and token position tracker.</div>
+        </div>
+        <div class="section-actions">
+          <button class="btn btn-primary" onclick="QueueModule.advanceQueue()">
+            ⚡ Simulate Queue Progress
+          </button>
+          <button class="btn btn-secondary btn-sm" onclick="QueueModule.resetQueue()">
+            🔄 Reset Queue
+          </button>
+        </div>
+      </div>
+
+      <div class="live-queue-hero">
+        <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 0.5rem;">
+          <div>
+            <h3 style="font-size: 1.15rem; color: var(--secondary);">Gate &amp; Weighbridge Clearance Status</h3>
+            <span style="font-size: 0.82rem; color: var(--text-muted);">Real-time sensory telemetry from Mandi entry barrier.</span>
+          </div>
+          <span id="queueStatusBadge" class="badge status-success">✓ OPTIMAL CLEARANCE SPEED</span>
+        </div>
+
+        <div class="queue-split-display">
+          <div class="queue-box queue-box-processing">
+            <div style="font-size: 0.75rem; color: var(--info); font-weight: 700; text-transform: uppercase;">Currently at Weighbridge Counter</div>
+            <div class="queue-token-text" id="queueNowProcessing" style="color: var(--info);">KP-018</div>
+            <div style="font-size: 0.8rem; color: var(--text-muted);">Moisture test &amp; gross weight logging</div>
+          </div>
+
+          <div class="queue-box queue-box-yours">
+            <div style="font-size: 0.75rem; color: var(--primary-dark); font-weight: 700; text-transform: uppercase;">Your Allocated Token</div>
+            <div class="queue-token-text" id="queueYourToken" style="color: var(--primary);">KP-024</div>
+            <div style="font-size: 0.8rem; color: var(--text-muted);"><strong id="queueFarmersAhead">5</strong> vehicles ahead of you</div>
+          </div>
+        </div>
+
+        <!-- Progress Bar -->
+        <div style="margin: 1rem 0;">
+          <div style="display: flex; justify-content: space-between; font-size: 0.8rem; font-weight: 600;">
+            <span>Queue Progress</span>
+            <span id="queueProgressPercentText" style="color: var(--primary);">40% queue cleared</span>
+          </div>
+          <div class="queue-progress-bar-wrap">
+            <div class="queue-progress-bar-fill" id="queueProgressBarFill"></div>
+          </div>
+        </div>
+
+        <!-- Visual Queue Line -->
+        <div style="margin-top: 1rem;">
+          <div style="font-size: 0.8rem; font-weight: 700; color: var(--secondary); margin-bottom: 0.35rem;">Live Visual Queue Sequence:</div>
+          <div class="visual-queue-line" id="visualQueueLineContainer"></div>
+        </div>
+      </div>
+
+      <!-- Queue Telemetry Stats -->
+      <div class="grid-3">
+        <div class="card">
+          <div class="card-header">
+            <h4 style="font-size: 0.95rem;">⏱️ Estimated Waiting Time</h4>
+          </div>
+          <div style="font-size: 1.75rem; font-weight: 800; color: var(--secondary);" id="queueEstimatedWait">42 mins</div>
+          <div style="font-size: 0.78rem; color: var(--text-muted); margin-top: 0.25rem;">Dynamically updated per clearance event</div>
+        </div>
+
+        <div class="card">
+          <div class="card-header">
+            <h4 style="font-size: 0.95rem;">🏛️ Mandi Processing Speed</h4>
+          </div>
+          <div style="font-size: 1.75rem; font-weight: 800; color: var(--primary);" id="queueCapacityText">12 farmers / hr</div>
+          <div style="font-size: 0.78rem; color: var(--text-muted); margin-top: 0.25rem;">3 automated weighbridges operating</div>
+        </div>
+
+        <div class="card">
+          <div class="card-header">
+            <h4 style="font-size: 0.95rem;">⚡ Avg Service Time</h4>
+          </div>
+          <div style="font-size: 1.75rem; font-weight: 800; color: var(--secondary);" id="queueSpeedText">4.5 mins / vehicle</div>
+          <div style="font-size: 0.78rem; color: var(--text-muted); margin-top: 0.25rem;">Quality assaying &amp; weighbridge cycle</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========================================================================
+         SECTION 6: PROCUREMENT TRACKING
+         ======================================================================== -->
+    <section class="app-section" id="sec-tracking">
+      <div class="section-header">
+        <div class="section-title-wrap">
+          <h2>🚚 Procurement Milestone Tracking</h2>
+          <div class="section-subtitle">Real-time status tracking from farm departure to physical verification, weighbridge, and DBT payment.</div>
+        </div>
+        <div class="section-actions">
+          <span id="trackingCurrentStatusBadge" class="badge status-processing">
+            <span class="pulse-dot"></span> In Transit
+          </span>
+        </div>
+      </div>
+
+      <div class="grid-2-1">
+        <!-- Timeline Steps Card -->
+        <div class="card">
+          <div class="card-header">
+            <h3>📍 Journey &amp; Mandi Milestones</h3>
+            <span style="font-size: 0.8rem; color: var(--text-muted);">9-Stage Comprehensive Pipeline</span>
+          </div>
+
+          <div class="timeline" id="timelineStepsContainer"></div>
+        </div>
+
+        <!-- Stage Progression Controls Card -->
+        <div class="card">
+          <div class="card-header">
+            <h3>🎮 Milestone Simulation</h3>
+            <span class="badge status-info">Judge Controls</span>
+          </div>
+          <p style="font-size: 0.85rem; color: var(--text-muted); margin-bottom: 1rem;">
+            Advance the farmer through subsequent physical checkpoints at the Mandi yard.
+          </p>
+
+          <div id="trackingActionButtons" style="display: flex; flex-direction: column; gap: 0.6rem;"></div>
+
+          <div style="background: #f8fafc; border: 1px solid var(--border-color); border-radius: var(--radius-md); padding: 0.85rem; margin-top: 1.5rem; font-size: 0.8rem; color: var(--text-main);">
+            <div style="font-weight: 700; color: var(--primary-dark); margin-bottom: 0.2rem;">💡 Smart India Hackathon Note</div>
+            Every stage transition updates the farmer's mobile timeline instantly and logs an audit trail on the central Mandi portal.
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========================================================================
+         SECTION 7: DYNAMIC RESCHEDULING & 25% THRESHOLD ENGINE
+         ======================================================================== -->
+    <section class="app-section" id="sec-rescheduling">
+      <div class="section-header">
+        <div class="section-title-wrap">
+          <h2>⏱️ Dynamic Rescheduling &amp; 25% Threshold Engine</h2>
+          <div class="section-subtitle">Comparing actual transit delays against the farmer's 25% travel buffer to maintain or dynamically reallocate slots.</div>
+        </div>
+        <div class="section-actions">
+          <button class="btn btn-accent" onclick="ReschedulingModule.applyDelayScenario()">
+            ⚡ Apply Delay Scenario to System
+          </button>
+        </div>
+      </div>
+
+      <!-- Explanation Banner -->
+      <div class="card reschedule-engine-card">
+        <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 0.75rem; border-bottom: 1px solid var(--border-light); padding-bottom: 0.75rem;">
+          <h3 style="color: var(--secondary);">🧠 25% Threshold Rule Engine Specification</h3>
+          <span class="badge status-info">Algorithm Active</span>
+        </div>
+
+        <div class="grid-4" style="margin-top: 1rem;">
+          <div class="centre-metric-item">
+            <div class="m-label">Original Slot</div>
+            <div class="m-val" id="reschedOrigSlot">10:00 AM</div>
+          </div>
+          <div class="centre-metric-item">
+            <div class="m-label">Expected Travel Time</div>
+            <div class="m-val" id="reschedTravelTime">5 hrs (300 mins)</div>
+          </div>
+          <div class="centre-metric-item" style="background: #fff8e1; border-color: #ffe082;">
+            <div class="m-label">System 25% Threshold</div>
+            <div class="m-val" id="reschedThreshold" style="color: #b26a00;">75 mins (Fixed 25%)</div>
+          </div>
+          <div class="centre-metric-item">
+            <div class="m-label">Simulated Delay</div>
+            <div class="m-val" id="reschedActualDelay" style="color: var(--danger);">90 mins</div>
+          </div>
+        </div>
+
+        <!-- Delay Selector Presets -->
+        <div style="margin-top: 1.25rem;">
+          <label class="form-label">Select Simulated Transit Delay to Test:</label>
+          <div class="delay-selector-group">
+            <button class="delay-btn" data-delay="15" onclick="ReschedulingModule.setSimulatedDelay(15)">15 mins</button>
+            <button class="delay-btn" data-delay="30" onclick="ReschedulingModule.setSimulatedDelay(30)">30 mins</button>
+            <button class="delay-btn" data-delay="45" onclick="ReschedulingModule.setSimulatedDelay(45)">45 mins (Minor)</button>
+            <button class="delay-btn" data-delay="60" onclick="ReschedulingModule.setSimulatedDelay(60)">60 mins</button>
+            <button class="delay-btn selected" data-delay="90" onclick="ReschedulingModule.setSimulatedDelay(90)">90 mins (Crosses 25%)</button>
+            <button class="delay-btn" data-delay="120" onclick="ReschedulingModule.setSimulatedDelay(120)">120 mins</button>
+          </div>
+
+          <div style="display: flex; align-items: center; gap: 0.75rem; max-width: 320px;">
+            <label class="form-label" style="margin: 0; white-space: nowrap;">Custom Delay (Mins):</label>
+            <input type="number" id="customDelayInput" class="form-control" placeholder="e.g. 75" min="0">
+          </div>
+        </div>
+
+        <!-- Live Evaluation Decision Box -->
+        <div id="thresholdDecisionCard"></div>
+      </div>
+    </section>
+
+    <!-- ========================================================================
+         SECTION 8: FARMER PROCUREMENT STATUS & PAYMENT (CRITICAL FEATURE)
+         ======================================================================== -->
+    <section class="app-section" id="sec-status">
+      <div class="section-header">
+        <div class="section-title-wrap">
+          <h2>🌾 Farmer Procurement Status &amp; DBT Payment</h2>
+          <div class="section-subtitle">Comprehensive post-procurement quality grading, deduction reasons, MSP calculation, and direct benefit settlement.</div>
+        </div>
+        <div class="section-actions">
+          <span id="procStateBadge" class="badge status-completed">✓ PROCUREMENT COMPLETED</span>
+        </div>
+      </div>
+
+      <!-- Summary Breakdown Card -->
+      <div class="card procurement-summary-card">
+        <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 0.5rem; border-bottom: 1px solid var(--border-light); padding-bottom: 0.75rem;">
+          <div>
+            <h3 style="color: var(--secondary);">Crop Quality Inspection &amp; Acceptance Report</h3>
+            <span style="font-size: 0.85rem; color: var(--text-muted);">Assayed Commodity: <strong id="procCropName">Wheat</strong> (Fair Average Quality Grade-A)</span>
+          </div>
+          <button class="btn btn-secondary btn-sm" onclick="StatusModule.showReceiptModal()">
+            📄 View Digital Receipt
+          </button>
+        </div>
+
+        <!-- Quantities Grid -->
+        <div class="qty-breakdown-grid">
+          <div class="qty-box qty-submitted">
+            <div style="font-size: 0.75rem; color: var(--text-muted); font-weight: 700; text-transform: uppercase;">Submitted Harvest</div>
+            <div class="qty-val" id="procSubmittedDisplay" style="color: var(--secondary);">100 kg</div>
+            <div style="font-size: 0.78rem; color: var(--text-muted);">Gross weighbridge intake</div>
+          </div>
+
+          <div class="qty-box qty-accepted">
+            <div style="font-size: 0.75rem; color: var(--success); font-weight: 700; text-transform: uppercase;">Accepted Quantity (FAQ)</div>
+            <div class="qty-val" id="procAcceptedDisplay">70 kg</div>
+            <div style="font-size: 0.78rem; color: var(--success);">Eligible for 100% MSP Rate</div>
+          </div>
+
+          <div class="qty-box qty-rejected">
+            <div style="font-size: 0.75rem; color: var(--danger); font-weight: 700; text-transform: uppercase;">Deducted / Rejected Quantity</div>
+            <div class="qty-val" id="procRejectedDisplay">30 kg</div>
+            <div style="font-size: 0.78rem; color: var(--danger);">Non-compliant with FAQ standard</div>
+          </div>
+        </div>
+
+        <!-- Rejection Reason Box -->
+        <div class="rejection-reason-box" id="procRejectionReasonBox">
+          <strong>⚠️ Quality Deduction Reason:</strong> <span id="procRejectionReasonText">Moisture content 14.8% (exceeds 12.0% FAQ limit) and 2.2% foreign matter</span>
+        </div>
+
+        <!-- MSP Payable Calculation Box -->
+        <div class="msp-calc-box">
+          <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 0.5rem;">
+            <div>
+              <h4>Official Government Minimum Support Price (MSP)</h4>
+              <div class="msp-formula-line">
+                Formula: <span style="color: #ffeb3b; font-weight: 700;">Accepted Quintals (<span id="procAcceptedQuintals">0.70 Qtl</span>) &times; MSP Rate (<span id="procMspRate">₹2,425</span>)</span>
+              </div>
+            </div>
+            <div style="text-align: right;">
+              <div style="font-size: 0.8rem; text-transform: uppercase; letter-spacing: 0.05em; color: #a5d6a7;">Total Payable Amount</div>
+              <div class="total-payable-huge" id="procTotalPayable">₹1,697.50</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Payment Stages Pipeline -->
+        <div style="margin-top: 1.5rem;">
+          <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.5rem;">
+            <h4 style="font-size: 1rem; color: var(--secondary);">💳 PFMS Direct Benefit Transfer (DBT) Pipeline</h4>
+            <span class="badge status-processing" id="procPaymentStateBadge">Processing</span>
+          </div>
+
+          <div class="payment-stage-pipeline" id="paymentPipelineContainer"></div>
+          <div id="paymentCurrentStageDesc" style="font-size: 0.85rem; color: var(--text-main); margin-bottom: 1rem;"></div>
+          <div id="paymentActionButtons" style="display: flex; gap: 0.75rem; flex-wrap: wrap;"></div>
+        </div>
+
+        <!-- Interactive Quantity Adjustment Tool for Judges -->
+        <div style="background: #f8fafc; border: 1px solid var(--border-color); border-radius: var(--radius-md); padding: 1.25rem; margin-top: 1.5rem;">
+          <h4 style="font-size: 0.95rem; color: var(--secondary); margin-bottom: 0.5rem;">⚙️ Live Demo Quantity &amp; Reason Playground</h4>
+          <p style="font-size: 0.8rem; color: var(--text-muted); margin-bottom: 0.75rem;">
+            Demonstrate arbitrary farmer quantities to judges. The system converts kg to Quintals and recalculates the exact MSP payable amount on the fly.
+          </p>
+          <div class="form-row">
+            <div class="form-group">
+              <label class="form-label">Submitted Quantity (kg)</label>
+              <input type="number" id="statusSubmittedQty" class="form-control" value="100" min="1">
+            </div>
+            <div class="form-group">
+              <label class="form-label">Accepted Quantity (kg)</label>
+              <input type="number" id="statusAcceptedQty" class="form-control" value="70" min="0">
+            </div>
+            <div class="form-group">
+              <label class="form-label">Deduction / Rejection Reason</label>
+              <input type="text" id="statusRejectionReason" class="form-control" value="Moisture content 14.8% (exceeds 12.0% FAQ limit) and 2.2% foreign matter">
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========================================================================
+         SECTION 9: NOTIFICATIONS CENTER
+         ======================================================================== -->
+    <section class="app-section" id="sec-notifications">
+      <div class="section-header">
+        <div class="section-title-wrap">
+          <h2>🔔 Notification Center</h2>
+          <div class="section-subtitle">Real-time alerts, SMS dispatch logs, queue push notices, and payment settlement confirmations.</div>
+        </div>
+        <div class="section-actions">
+          <button class="btn btn-secondary btn-sm" onclick="NotificationsModule.markAllAsRead()">
+            ✓ Mark All as Read
+          </button>
+          <button class="btn btn-secondary btn-sm" onclick="NotificationsModule.clearAll()">
+            🗑️ Clear History
+          </button>
+        </div>
+      </div>
+
+      <!-- Filter Buttons -->
+      <div style="display: flex; gap: 0.5rem; flex-wrap: wrap; margin-bottom: 1.25rem;">
+        <button class="btn btn-primary btn-sm notif-filter-btn" data-cat="all" onclick="NotificationsModule.filterCategory('all')">All Alerts</button>
+        <button class="btn btn-secondary btn-sm notif-filter-btn" data-cat="reschedule" onclick="NotificationsModule.filterCategory('reschedule')">Rescheduling &amp; 25% Threshold</button>
+        <button class="btn btn-secondary btn-sm notif-filter-btn" data-cat="queue" onclick="NotificationsModule.filterCategory('queue')">Queue &amp; Tokens</button>
+        <button class="btn btn-secondary btn-sm notif-filter-btn" data-cat="payment" onclick="NotificationsModule.filterCategory('payment')">DBT Payments</button>
+        <button class="btn btn-secondary btn-sm notif-filter-btn" data-cat="tracking" onclick="NotificationsModule.filterCategory('tracking')">Milestones</button>
+      </div>
+
+      <!-- Notifications Feed -->
+      <div id="notificationsListContainer"></div>
+    </section>
+
+    <!-- ========================================================================
+         SECTION 10: JUDGE DEMO (16-STEP GUIDED TOUR)
+         ======================================================================== -->
+    <section class="app-section" id="sec-judge-demo">
+      <div class="section-header">
+        <div class="section-title-wrap">
+          <h2>▶ Guided SIH 2026 Judge Demonstration</h2>
+          <div class="section-subtitle">16-step guided walkthrough verifying every functional feature, calculation, threshold rule, and payment flow.</div>
+        </div>
+      </div>
+
+      <div class="judge-demo-bar">
+        <div class="judge-demo-header">
+          <h3>
+            <span>🏆</span> Smart Procurement SIH 2026 Interactive Tour
+          </h3>
+          <span class="step-counter-badge" id="judgeStepCounter">Step 1 of 16</span>
+        </div>
+
+        <div class="judge-progress-track">
+          <div class="judge-progress-fill" id="judgeProgressFill" style="width: 6.25%;"></div>
+        </div>
+
+        <div class="judge-step-body">
+          <div class="judge-step-title" id="judgeStepTitle">Step 1: Farmer Profile &amp; Harvest Registration</div>
+          <div class="judge-step-desc" id="judgeStepDesc">
+            Farmer Ramesh Patel registers with 100 kg of Wheat harvest. The farmer selects his home district (Bhopal) and basic verification details.
+          </div>
+          <div class="judge-highlight-box" id="judgeStepHighlight">
+            <strong>💡 SIH 2026 Impact / Solution Value:</strong> Enables digital record keeping, eliminates middlemen, and prevents unregistered grain dumping at Mandi yards.
+          </div>
+        </div>
+
+        <div class="judge-demo-controls">
+          <div style="display: flex; gap: 0.5rem;">
+            <button class="btn btn-secondary btn-sm" id="btnJudgePrev" disabled>
+              ⏮ Previous Step
+            </button>
+            <button class="btn btn-accent" id="btnJudgeNext">
+              Next: Step 2 ➔
+            </button>
+          </div>
+
+          <div style="display: flex; gap: 0.5rem;">
+            <button class="btn btn-outline-primary btn-sm" style="color: white; border-color: rgba(255,255,255,0.4);" id="btnJudgeAutoPlay">
+              ⚡ Run Full Auto-Tour
+            </button>
+            <button class="btn btn-secondary btn-sm" id="btnJudgeRestart">
+              🔄 Restart Demo
+            </button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ==========================================================================
+       MODAL 1: DIGITAL TOKEN PASS
+       ========================================================================== -->
+  <div class="modal-overlay" id="tokenPassModal">
+    <div class="modal-card">
+      <button class="modal-close-btn" onclick="SchedulingModule.closeTokenPassModal()">&times;</button>
+      <div style="text-align: center; border-bottom: 2px dashed var(--border-color); padding-bottom: 1rem; margin-bottom: 1rem;">
+        <div style="font-size: 2rem;">🌾</div>
+        <h3 style="color: var(--primary-dark);">Government of India &bull; e-Procurement Pass</h3>
+        <p style="font-size: 0.78rem;">National Agricultural Procurement Network &bull; SIH 2026</p>
+      </div>
+
+      <div style="text-align: center; margin: 1rem 0;">
+        <div style="font-size: 0.75rem; color: var(--text-muted); text-transform: uppercase;">Assigned Token Number</div>
+        <div class="token-badge-large" id="modalTokenNumber" style="font-size: 2rem; margin: 0.25rem 0;">KP-024</div>
+        <div style="font-size: 0.78rem; color: var(--primary); font-weight: 700;">✓ GATE BARCODE SCAN READY</div>
+      </div>
+
+      <div style="font-size: 0.85rem; background: var(--bg-main); padding: 1rem; border-radius: var(--radius-md); margin-bottom: 1rem;">
+        <div style="display: flex; justify-content: space-between; margin-bottom: 0.35rem;">
+          <span style="color: var(--text-muted);">Farmer Name:</span>
+          <strong id="modalFarmerName">Ramesh Patel</strong>
+        </div>
+        <div style="display: flex; justify-content: space-between; margin-bottom: 0.35rem;">
+          <span style="color: var(--text-muted);">Mobile:</span>
+          <span id="modalFarmerMobile">9876543210</span>
+        </div>
+        <div style="display: flex; justify-content: space-between; margin-bottom: 0.35rem;">
+          <span style="color: var(--text-muted);">Crop &amp; Quantity:</span>
+          <strong id="modalCropDetails">100 kg of Wheat</strong>
+        </div>
+        <div style="display: flex; justify-content: space-between; margin-bottom: 0.35rem;">
+          <span style="color: var(--text-muted);">Procurement Mandi:</span>
+          <strong id="modalCentreName">Kisan Pragati Mandi</strong>
+        </div>
+        <div style="display: flex; justify-content: space-between; margin-bottom: 0.35rem;">
+          <span style="color: var(--text-muted);">Appointment Slot:</span>
+          <strong id="modalSlotTime" style="color: var(--primary);">10:00 AM</strong>
+        </div>
+        <div style="display: flex; justify-content: space-between;">
+          <span style="color: var(--text-muted);">Travel Buffer:</span>
+          <span id="modalThresholdInfo">300 mins (25% Buffer: 75 mins)</span>
+        </div>
+      </div>
+
+      <div style="display: flex; justify-content: flex-end; gap: 0.5rem;">
+        <button class="btn btn-secondary btn-sm" onclick="window.print()">🖨️ Print Pass</button>
+        <button class="btn btn-primary btn-sm" onclick="SchedulingModule.closeTokenPassModal()">Done</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ==========================================================================
+       MODAL 2: OFFICIAL DIGITAL E-RECEIPT (PFMS-DBT)
+       ========================================================================== -->
+  <div class="modal-overlay" id="receiptModal">
+    <div class="modal-card" style="max-width: 680px;">
+      <button class="modal-close-btn" onclick="StatusModule.closeReceiptModal()">&times;</button>
+      
+      <div class="receipt-wrapper">
+        <div class="receipt-header">
+          <div class="receipt-emblem">🏛️</div>
+          <h3>DEPARTMENT OF AGRICULTURE &amp; FARMERS WELFARE</h3>
+          <p>E-Procurement &amp; Direct Benefit Transfer (DBT) Settlement Receipt</p>
+          <div style="font-size: 0.75rem; color: var(--text-muted); margin-top: 0.25rem;">
+            Transaction ID: <strong id="recTxnId">PFMS-DBT-2026-98174209</strong> &bull; Date: <span id="recDate">--</span>
+          </div>
+        </div>
+
+        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 0.75rem; font-size: 0.82rem; margin-bottom: 1rem;">
+          <div>
+            <div>Farmer: <strong id="recFarmerName">Ramesh Patel</strong></div>
+            <div>Mobile: <span id="recFarmerMobile">+91 9876543210</span></div>
+            <div>Location: <span id="recFarmerLocation">Pipariya, Bhopal</span></div>
+          </div>
+          <div>
+            <div>Procurement Centre: <strong id="recCentreName">Kisan Pragati Mandi</strong></div>
+            <div>In-Charge: <span id="recCentreIncharge">Shri R. K. Verma</span></div>
+            <div>Token Ref: <strong id="recToken">KP-024</strong></div>
+          </div>
+        </div>
+
+        <table class="receipt-table">
+          <thead>
+            <tr>
+              <th>Description / Commodity</th>
+              <th>Submitted</th>
+              <th>Accepted</th>
+              <th>Deducted</th>
+              <th>Rate / Qtl</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><strong id="recCrop">Wheat (FAQ Quality)</strong></td>
+              <td id="recSubmittedQty">100 kg</td>
+              <td id="recAcceptedQty" style="color: var(--success); font-weight: bold;">70 kg (0.70 Qtl)</td>
+              <td id="recRejectedQty" style="color: var(--danger);">30 kg</td>
+              <td id="recMspRate">₹2,425.00</td>
+            </tr>
+          </tbody>
+        </table>
+
+        <div style="font-size: 0.78rem; background: #fff3e0; border-left: 3px solid var(--warning); padding: 0.5rem; margin-bottom: 1rem; color: #e65100;">
+          <strong>Deduction Quality Remarks:</strong> <span id="recRejectionReason">Moisture content 14.8% (exceeds 12.0% FAQ limit)</span>
+        </div>
+
+        <div style="background: #f8fafc; border: 1px solid #e2e8f0; border-radius: var(--radius-sm); padding: 0.75rem; display: flex; justify-content: space-between; align-items: center;">
+          <div>
+            <div style="font-size: 0.72rem; color: var(--text-muted); text-transform: uppercase;">Payable Calculation</div>
+            <div style="font-size: 0.9rem; font-weight: 600;" id="recCalculationFormula">0.70 Qtl &times; ₹2,425.00</div>
+          </div>
+          <div style="text-align: right;">
+            <div style="font-size: 0.72rem; color: var(--primary); text-transform: uppercase; font-weight: 700;">Net DBT Credited</div>
+            <div style="font-size: 1.5rem; font-weight: 900; color: var(--primary);" id="recTotalAmount">₹1,697.50</div>
+          </div>
+        </div>
+
+        <div style="margin-top: 1rem; font-size: 0.78rem; color: var(--text-muted);">
+          <div>Settlement Bank: <strong id="recBankInfo">State Bank of India (A/C ending in 4082)</strong></div>
+          <div>Payment Route: <span id="recPaymentMethod">Direct Benefit Transfer (DBT) / PFMS Portal</span></div>
+        </div>
+
+        <div class="receipt-footer">
+          <div>
+            <div style="font-size: 0.7rem; color: var(--text-muted);">Authorized Digital Signature</div>
+            <div style="font-weight: 700; color: var(--secondary);">Mandi Board Assayer &amp; Assessor</div>
+          </div>
+          <div class="receipt-seal">
+            ✓ PFMS PAID &bull; GOVT OF INDIA
+          </div>
+        </div>
+      </div>
+
+      <div style="display: flex; justify-content: flex-end; gap: 0.5rem; margin-top: 1rem;">
+        <button class="btn btn-secondary btn-sm" onclick="StatusModule.printReceipt()">🖨️ Print Receipt</button>
+        <button class="btn btn-primary btn-sm" onclick="StatusModule.closeReceiptModal()">Close</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ==========================================================================
+       SITE FOOTER
+       ========================================================================== -->
+  <footer class="site-footer">
+    <div class="container footer-inner">
+      <div class="footer-credits">
+        <strong>Smart Procurement Scheduling for Farmers</strong> &bull; Team <strong>Code Cultivators</strong>
+        <div style="font-size: 0.75rem; color: #94a3b8; margin-top: 0.2rem;">
+          Smart India Hackathon 2026 &bull; Problem Statement ID: SIH26032 &bull; Ministry / Govt. of India Agritech Initiative
+        </div>
+      </div>
+      <div>
+        <span class="badge" style="background: rgba(255,255,255,0.1); color: #fff; border: 1px solid rgba(255,255,255,0.2);">
+          ✓ 100% Static &bull; GitHub Pages Ready
+        </span>
+      </div>
+    </div>
+  </footer>
+
+  <!-- ==========================================================================
+       JAVASCRIPT MODULE ARCHITECTURE (Relative Paths for GitHub Pages)
+       ========================================================================== -->
+  <script src="js/data.js"></script>
+  <script src="js/threshold.js"></script>
+  <script src="js/registration.js"></script>
+  <script src="js/recommendation.js"></script>
+  <script src="js/scheduling.js"></script>
+  <script src="js/queue.js"></script>
+  <script src="js/tracking.js"></script>
+  <script src="js/rescheduling.js"></script>
+  <script src="js/status.js"></script>
+  <script src="js/notifications.js"></script>
+  <script src="js/judge-demo.js"></script>
+  <script src="js/app.js"></script>
+
+</body>
+</html>
